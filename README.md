@@ -5,3 +5,5 @@
 ---
 
 `pynamesgenerator.py` is written by [GeekGao](https://github.com/geekgao), using under MIT LICENSE. Original repository is [here](https://github.com/geekgao/PyNamesGenerator).
+
+`randomGen_output.txt` is a sample output of `randomGen.py`.
