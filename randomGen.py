@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import numpy as np
 import string
 import random
 from pynamesgenerator import gen_two_words, gen_year
