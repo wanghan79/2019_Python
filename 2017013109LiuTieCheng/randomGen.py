@@ -20,7 +20,7 @@ class dataGenerate:
     for i in range(size):
       name = gen_two_words()
       birth = gen_year(1970, 2000)
-      flnum = random.uniform(20, 50)    # Generate a float number
+      flnum = round(random.uniform(20, 50), 3)    # Generate a float number
       salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))    # Generate a random string
       data = {'name': name, 'birth': birth, 'floatnum': flnum, 'salt': salt, 'A': self.genInt(), 'B': self.genInt(), 'C': self.genInt()}
       yield data
