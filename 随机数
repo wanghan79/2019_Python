@@ -1,0 +1,9 @@
+import random
+import string
+for i in range(100):
+    x = random.uniform(1,10);
+    y =''.join(random.sample(string.ascii_letters+string.digits,8));
+    z = random.randint(1,10);
+    dit={random.choice('abcdefghijklmnopqrstuvmxyz'):random.sample(string.ascii_letters,z)};
+    print(dit);
+    print(x,end=' '),print(y,end=' '),print(z);
