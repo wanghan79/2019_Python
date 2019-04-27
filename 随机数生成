@@ -1,0 +1,14 @@
+import random
+import string
+
+cout=0
+for i in range(100000):
+    cout+=1
+    print(cout,".",end='  ')#数据编号
+    print(random.uniform(1,100),end='  ')#随机生成范围在1-100的小数
+    RandomStr =  ''.join(random.sample(string.ascii_letters + string.digits, 10))#长度为10的字符串
+    print(RandomStr,end='  ')
+    print(random.randint(1,1000),end='  ')
+    x=random.randint(1,10)
+    dict1={random.choice(string.ascii_letters):random.sample(string.ascii_letters+string.digits,x)}
+    print(dict1)
