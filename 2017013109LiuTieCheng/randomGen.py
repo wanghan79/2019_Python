@@ -5,7 +5,7 @@ import random
 from pynamesgenerator import gen_two_words, gen_year
 
 class dataGenerate:
-  """dataGenerate
+  """class dataGenerate:
   This class is used to generate random data, this class includes two functions.
 
   No attributes needed.
