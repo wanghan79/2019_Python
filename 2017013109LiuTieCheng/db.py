@@ -54,10 +54,10 @@ class mongo:
 
   def dataCountByNum(self, collectionName, catagory, method, data, dataSub=0):
     if method == '$in' or method == '$nin':
-      count = collectionName.find({catagory: {'\''method'\'': [data, dataSub]}})
+      count = collectionName.find({catagory: {method: [data, dataSub]}})
       return count
     else:
-      count = collectionName.find({catagory: {'\''method'\'': data}})
+      count = collectionName.find({catagory: {method: data}})
       return count
 
   def dataSort(self, collectionName, catagory, method='ASCENDING'):

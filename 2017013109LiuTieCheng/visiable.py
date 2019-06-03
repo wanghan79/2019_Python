@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import matplotlib as plt
+from matplotlib import pyplot as plt
+import matplotlib
 import numpy as np
-
-zhFont = matplotlib.font_manager.FontProperties(fname="SimHei.ttf")
 
 class plot:
   def setTitle(self, title):
-    plt.title(title, fontproperties=zhFont)
+    plt.title(title)
 
   def showPlot(self):
     plt.show()
 
-  def
+  def genHistogram(self, array, bins):
+    a = np.array(array)
+    plt.hist(a, bins)
