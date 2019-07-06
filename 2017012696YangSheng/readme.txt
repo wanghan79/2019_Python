@@ -1,1 +1,2 @@
-
+generateData.py产生20w条数据
+gen_data.txt存储了generateData.py产生的20w条数据
