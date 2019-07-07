@@ -2,7 +2,7 @@
 # coding=utf-8
  
 #import pymongo
-from data_gt import Generate
+from data_generate import Generate
 from pymongo import MongoClient
 class mongo(Generate):
     def build():
