@@ -8,7 +8,7 @@ conn = MongoClient('127.0.0.1',27017)
 db = conn.mydb
 my_set=db.test_set
 def fun():
-    for i in range(100):
+    for i in range(100000):
         x = random.uniform(1, 10)
         y = ''.join(random.sample(string.ascii_letters + string.digits, 8))
         z = random.randint(1, 10)
