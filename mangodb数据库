@@ -17,7 +17,15 @@ def fun():
         yield a
         dit1={'float':x,'string':y,'int':z,'dict':dit}
         my_set.insert(dit1)
-fun()
+g=fun()
+while True :
+    try:
+        y = next(g)
+        print(y)
+    except StopIteration as e:
+        print(e.value)
+        break
+
 all=my_set.find()
 for i in all:
     print(i)
