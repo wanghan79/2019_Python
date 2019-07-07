@@ -1,0 +1,23 @@
+from typing import Dict, List, Any, Tuple, Union
+
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+import random
+import string
+conn = MongoClient('127.0.0.1',27017)
+db = conn.mydb
+my_set=db.test_set
+def fun():
+    for i in range(100):
+        x = random.uniform(1, 10)
+        y = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+        z = random.randint(1, 10)
+        dit = {random.choice('abcdefghijklmnopqrstuvmxyz'): random.sample(string.ascii_letters, z)}
+        a = (x, y, z, dit)
+        yield a
+        dit1={'float':x,'string':y,'int':z,'dict':dit}
+        my_set.insert(dit1)
+fun()
+all=my_set.find()
+for i in all:
+    print(i)
