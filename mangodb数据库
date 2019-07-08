@@ -16,7 +16,7 @@ def fun():
         a = (x, y, z, dit)
         yield a
         dit1={'float':x,'string':y,'int':z,'dict':dit}
-        my_set.insert(dit1)
+        my_set.insert_one(dit1)
 g=fun()
 while True :
     try:
