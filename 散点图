@@ -1,0 +1,52 @@
+from typing import Dict, List, Any, Tuple, Union
+
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+import random
+import string
+import pymatlab as pm
+import pandas
+import numpy
+import matplotlib.pyplot as plt
+conn = MongoClient('127.0.0.1',27017)
+db = conn.mydb
+my_set=db.test_set
+my_set.remove(None)
+def fun():
+    for i in range(100000):
+        x = random.uniform(1, 10000)
+        y = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+        z = random.randint(1, 100000)
+        n=random.randint(1,10)
+        dit = {random.choice('abcdefghijklmnopqrstuvmxyz'): random.sample(string.ascii_letters, n)}
+        a = (x, y, z, dit)
+        yield a
+        dit1={'float':x,'string':y,'int':z,'dict':dit}
+        my_set.insert_one(dit1)
+g=fun()
+while True :
+    try:
+        y = next(g)
+        print(y)
+    except StopIteration as e:
+        print(e.value)
+        break
+sss=plt.figure()
+data=pandas.DataFrame(list(my_set.find()))
+data1=data['int']
+data2=data['float']
+ss=sss.add_subplot(1,2,1)
+s=sss.add_subplot(1,2,2)
+x=numpy.arange(1,100001)
+ss.set_title('Scatter int')
+s.set_title('Scatter float')
+plt.xlabel('x')
+plt.ylabel("y")
+plt.legend('int')
+plt.legend('float')
+ss.scatter(x,data1,c='b',marker='x')
+s.scatter(x,data2,c='g',marker='s')
+plt.show()
+all1=my_set.find()
+for i in all1:
+    print(i)
