@@ -8,8 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pymongo import MongoClient
 #from run_mongo import build
-#db_name=
-# col_name=
+#绘制的是饼图，10万数据中int分成4段。小于500，大于400小于1000，大于1000小于1500，大于1500小于2000
 class matplot():
     def picture():
         k1=k2=k3=k4=0
