@@ -1,4 +1,4 @@
-from tkinter import *
+﻿from tkinter import *
 from random_num import *
 from moveto_db import *
 from matplot_data import *
