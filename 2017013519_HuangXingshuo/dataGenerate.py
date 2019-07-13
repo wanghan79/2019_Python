@@ -28,26 +28,28 @@ class DataGenerate:
 
     def datagenerate(self):         #生成器函数
         for i in range(100000):
-            #生成前三种
-            for x in [1, 2, 3]:
-                yield self.datagenerateIntFloatStr(x)
+            #在本文件中需生成前三种
+            #在db.py中调用时只生成dict
+            if __name__ == "__main__":
+                for x in [1, 2, 3]:
+                    yield self.datagenerateIntFloatStr(x)
             #生成字典类型元素
             d = dict()
             dictSize = random.randint(3, 6)
             for j in range(dictSize):
-                keyOfj = self.datagenerateIntFloatStr(1)
-                valueOfj = self.datagenerateIntFloatStr(3)
+                keyOfj = self.datagenerateIntFloatStr(3)
+                valueOfj = self.datagenerateIntFloatStr(1)
                 d[keyOfj] = valueOfj
             yield d
 
-
-sampleOfDataGenerate = DataGenerate()
-results = sampleOfDataGenerate.datagenerate()
-num = 0
-#输出到文件，每行有一个int，一个float，一个string和一个dict
-for result in results:
-        print(result, file = f, end = '    ')
-        num = num + 1
-        if num % 4 == 0:
-            print("", file = f)
-f.close()
+if __name__ == "__main__" :
+    sampleOfDataGenerate = DataGenerate()
+    results = sampleOfDataGenerate.datagenerate()
+    num = 0
+    #输出到文件，每行有一个int，一个float，一个string和一个dict
+    for result in results:
+            print(result, file = f, end = '    ')
+            num = num + 1
+            if num % 4 == 0:
+                print("", file = f)
+    f.close()
