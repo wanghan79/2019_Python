@@ -1,13 +1,13 @@
 import pymongo
 from random_data import *
 
-def connect_mongodb():
+def connect_mongodb():#连接mongodb数据库
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient["tqdb"]
     mycol = mydb["sites"]
     return mycol
 
-def delete():
+def delete():#删除数据
     mycol=connect_mongodb()
     mycol.delete_many({})
 
