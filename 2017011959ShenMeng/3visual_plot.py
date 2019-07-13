@@ -28,7 +28,7 @@ collection = db['students']
 """
 定义一个可视化的类，实现从mongodb中取出数据分别进行散点图可视化和饼图可视化
 """
-class visual():
+class visual:
 
     """
     功能：取出mongodb中height和weight进行散点图可视化
