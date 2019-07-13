@@ -4,8 +4,8 @@ from pymongo import MongoClient
 
 #1.链接本地数据库服务
 name = MongoClient('localhost')
-#2.链接本地数据库 demo 没有会创建
-db = name.random_number   #demo数据库名
+#2.链接本地数据库，没有会创建
+db = name.random_number   #数据库名
 #3.创建，连接集合
 emp = db.province_city  #集合名字
 emp.remove(None)
