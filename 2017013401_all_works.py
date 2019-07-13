@@ -1,0 +1,192 @@
+from config import*
+
+import string,random
+
+import pymongo
+
+import urllib
+
+import threading
+
+import ast
+
+import matplotlib
+
+import matplotlib.pyplot as plt
+
+from numpy import *
+
+import numpy as np
+
+
+from urllib import request
+
+class randomGenerate:
+    
+    "'生成列表'"
+    
+def create_list():
+    
+    tmp=string.ascii_letters +string.digits
+    
+    "生成1—10长度的字符串"
+    
+    value=''.join(random.sample(tmp,random.randint(1,10)))
+    
+    list=[]
+    
+    list.append(value)
+    
+    return list
+    
+
+"在字典中分别插入整数、浮点数、列表"
+
+def get_dic():
+    
+    k=100000
+    
+    count=0
+    
+    while count <= k:
+
+        data1=create_list()
+        
+        data={'data1':data1,'data2':random.randint(100,200),'data3':random.random()}
+        
+        yield data
+
+        count += 1
+        
+
+if __name__ == '__main__':
+
+    "创建文件，把数据写入文件"
+
+output = open("random_output.txt","w")
+
+for res in get_dic():
+
+    output.write(str(res)+'\n')
+
+output.close()
+
+
+"""在MongoDB中，定义一个数据库"""
+
+
+
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+
+db = myclient.test
+
+collection = db['test']
+
+
+
+"""定义一个MongoDB操作的类"""
+
+class mongo_operation(threading.Thread):
+    
+
+    def __init__(self,num):
+
+        threading.Thread.__init__(self)
+
+        self.num = num
+
+
+
+    """将100000条数据存入MongoDB"""
+
+    def save_into_mongo(filename):
+
+        f = open(filename, 'r')
+
+        for i in f.readlines():
+
+            db.students.insert({'test':i})
+
+            r=mongo_operation(i)
+
+            r.start()
+
+
+
+
+    """查询记录总数"""
+
+    def count(self, table, condition=None):
+
+        try:
+            
+            self.db[table].count(condition)
+            
+            print('查找成功')
+            
+        except Exception as e:
+            
+                print(e)
+
+
+
+    """插入单条数据"""
+
+    def insert(self, table, data):
+
+        try:
+            
+            self.db[table].insert(data)
+            
+            print('插入成功')
+            
+        except Exception as e:
+            
+                print(e)
+
+
+
+
+    "'按条件删除记录'"
+    def delete(self, table, condition, one=False):
+ 
+         try:
+             
+             if one:
+                 
+                 self.db[table].delete_one(condition)
+                 
+                 print('删除成功')
+                 
+             else:
+                 
+                 result = self.db[table].delete_many(condition)
+                 
+                 print('删除成功')
+                 
+                 return result
+                
+         except Exception as e:
+             
+             print(e)
+
+
+
+if __name__ == '__main__':
+
+    mongo_operation.save_into_mongo('random_output.txt')
+    
+
+
+filename = 'random_output.txt'
+
+"""功能：将data.txt中数据转换为进行可视化"""
+
+x = np.arange(1,100001)
+
+y = np.loadtxt('random_output.txt',delimiter = ',',usecols = 1,unpack = False)
+
+plt.scatter(x,y,marker='o',s=1,alpha=0.5,color='red')
+
+plt.show()
+
