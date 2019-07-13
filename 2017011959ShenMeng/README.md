@@ -35,7 +35,7 @@ db.students.insert(single)
 
 删除制定条件的数据记录：db.students.remove({'stu_number':2017011959})
 
-步骤3：取出mongodb中height和weight运用matplotlib进行散点图和饼图可视化
+步骤3：visual_plot.py:取出mongodb中height和weight运用matplotlib进行散点图和饼图可视化
 
 
 
