@@ -1,3 +1,8 @@
+# coding=gbk
+'''
+
+@author: jianweizhao
+'''
 import numbers
 import random
 import string
