@@ -5,7 +5,7 @@ client = pymongo.MongoClient()
 db = client['my_db']
 collection = db['my_collection']
 class DataAccess:
-    def dgenerate (size=10000):
+    def dgenerate (size=100000):
         dict={'Charles':5,'Mark':4,'Bill':7,'Vincent':12,'William':3}
         for i in range(size):
             a = random.randint(1,100)#从1到100000中随机整型
