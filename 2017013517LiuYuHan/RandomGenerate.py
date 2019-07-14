@@ -6,7 +6,7 @@ class DataGenerate:
         dict={'Charles':5,'Mark':4,'Bill':7,'Vincent':12,'William':3}#字典
         for i in range(size):
             a = random.randint(1,100)
-            b = random.uniform(5,10)#从1到100000中随机浮点型
+            b = random.uniform(5,10)
             c = ''.join(random.sample(string.ascii_letters + string.digits,4))#随机4个字符
             d = random.sample(dict.items(),1)#随机选取一个键值对
             x = {
