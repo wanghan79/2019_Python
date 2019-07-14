@@ -1,4 +1,8 @@
+# coding=gbk
+'''
 
+@author: jianweizhao
+'''
 import pymongo
 from test1111.Generate_Data import Generate_Data
 
