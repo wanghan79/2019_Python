@@ -1,0 +1,26 @@
+import pymongo
+from Random import DataCreat
+
+#定义数据库
+MONGO_URL="localhost"  #本地数据库
+MONGO_DB="wd"          #定义的数据库名
+MONGO_TABLE="table"    #数据库的表名
+
+#链接并创建数据库
+client = pymongo.MongoClient(MONGO_URL) #生成一个MongoDB的对象
+db = client[MONGO_DB]                   #定义一个db，将数据库的名称传递过来
+
+#定义一个保存函数
+def save_to_mongo(ur):      #如果插入的数据成功，输出成功存储,并打印存储内容：否则输出存储失败和其值
+    if db[MONGO_TABLE].insert(ur):
+       print("成功存储到MongoDB",ur)
+    else:
+        print("存储失败",ur)
+
+#调用上一个文件中的函数并将其实例化传入数据库
+m=DataCreat()
+for j in m.Creat():
+    save_to_mongo(j)  #依次进行存储，并且将前一个Random的数据类型全部改成键值对的形式
+
+
+
