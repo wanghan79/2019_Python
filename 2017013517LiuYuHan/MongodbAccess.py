@@ -6,11 +6,10 @@ db = client['my_db']
 collection = db['my_collection']
 class DataAccess:
     def dgenerate (size=10000):
-        dict={'Charles':5,'Mark':4,'Bill':7,'Vincent':12,'William':3,'Joseph':7, 'James':8,'Henry':9,'Gary':6,'Martin':23,
-              'Malcolm':24,'Joan':14,'Niki':25,'Betty':14,'Linda':14,'Whitney':15,'Lily':17,'Albert':18,'Kevin':19,'Michael':19}
+        dict={'Charles':5,'Mark':4,'Bill':7,'Vincent':12,'William':3}
         for i in range(size):
-            a = random.randint(1,100000)#从1到100000中随机整型
-            b = random.uniform(1,100000)#从1到100000中随机浮点型
+            a = random.randint(1,100)#从1到100000中随机整型
+            b = random.uniform(5,10)#从1到100000中随机浮点型
             c = ''.join(random.sample(string.ascii_letters + string.digits,4))#随机4个字符
             d = random.sample(dict.items(),1)#随机选取一个键值对
             x = {
