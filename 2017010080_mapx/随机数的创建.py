@@ -1,7 +1,7 @@
 import random
 import string
 
-# 随机整数：并输出到xcnhr.txt中
+# 随机整数：并输出到mpx.txt中
 def generateRandomNumber(i):
     while i!=0:
         Int=random.randint(1,100000)

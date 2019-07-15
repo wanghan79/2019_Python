@@ -35,7 +35,7 @@ db.students.insert(single)
 
 删除制定条件的数据记录：db.students.remove({'stu_number':2017011959})
 
-步骤3：height_and_weight.py:将random_output.txt中的height和weight两列值提取出来存入visual_data.txt以用作散点图的数据
+步骤3：visual_plot.py:取出mongodb中height和weight运用matplotlib进行散点图和饼图可视化
 
-步骤4：visual_plot.py:将visual_data.txt中数据转换为矩阵进行可视化
+
 
