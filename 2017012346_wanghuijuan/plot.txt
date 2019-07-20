@@ -1,0 +1,28 @@
+from matplotlib import pyplot as plt
+
+import pymongo
+
+from numpy import *
+
+import dadacreate
+
+import pandas as pd
+
+fig = plt.figure(figsize=(5, 5))#新建图像
+
+ax = fig.add_subplot(111)   #add_subplot函数：添加画布，画布分割为1行1列，当前画布为第1块
+
+ax.set_title("scatter Plot")
+
+plt.xlabel('X')
+
+plt.ylabel('Y')
+
+x=datacreate.data.x
+
+y=datacreate.data.y
+
+ax.scatter(x,y,c='r')
+
+plt.show()
+

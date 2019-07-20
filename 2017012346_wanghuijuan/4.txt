@@ -1,0 +1,103 @@
+import string
+
+import random
+
+from pymongo import MongoClient
+
+import pandas as pd
+
+from matplotlib import pyplot as plt
+
+import numpy as np 
+
+#1.链接本地数据库服务
+
+con = MongoClient('localhost')
+
+#2.链接本地数据库 
+
+db = con. out 
+
+#3.创建，连接集合
+
+p = db.mydb #集合名字
+
+p.remove(None)
+
+def data():
+
+    for i in range(100000):
+
+        x=random.randint(1,100)# 随机生成整型数据
+
+        y=random.uniform(1,10)# 随机生成浮点型数据
+
+        z= '  '.join(random.sample(string.ascii_letters + string.digits, 10))# 随机生成10字符的字符串
+
+        m=random.randint(1,10)
+
+        dic={random.choice(string.ascii_letters):random.sample(string.ascii_letters+string.digits,m)}
+
+        tp = (x, y, z, dic)#把四个值放入tuple
+
+        yield tp#返回tuple
+
+ # 将数据保存在文件中
+
+f=open("output.txt","w")
+
+temp=data()
+
+print(temp)
+
+f.write(temp)
+
+f.close()
+
+client = pymongo.MongoClient(host='localhost', port=27017) 
+
+db = client['my_db']
+
+collection = db['my_collection']
+
+count = 0
+
+while (count < 9999):
+
+    randomNumber = {
+
+                        'num':count,
+
+                        'int': x,
+
+                        'float':y,
+
+                        'string': z,
+
+                        'dict': dic
+
+                    }
+    result = collection.insert_one(randomNumber)     #插入
+
+    count = count + 1
+
+
+point = pd.DataFrame(list(table.find()))
+
+x = point['int'] # 产生x坐标
+
+y = point['float'] # 产生y坐标
+
+fig = plt.figure(figsize=(5,5))
+
+ax = fig.add_subplot(111)
+
+x=np.arange(1,100001) 
+
+ax.scatter(x,y,c='r')
+
+ax.legend('int') 
+
+ax.grid(True)
+
+plt.show()

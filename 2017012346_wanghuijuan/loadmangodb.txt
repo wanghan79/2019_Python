@@ -1,0 +1,25 @@
+from pymongo import MongoClient
+
+import datacreate
+
+con=MongoClient()##连接客户端
+
+db = con.Class ##创建数据库
+
+p=db.Classdata ##创建集合
+
+##循环插入数据
+
+for i in range(100000):
+
+    person={'id':i,'data':datacreate.data()}
+
+    result=p.insert(person)
+
+    print(result)
+
+count=p.find().count() ##统计数据
+
+myquery={'id':10}##删除数据
+
+p.delete_one(myquery)
